@@ -18,16 +18,7 @@ pipeline {
       }
     }
     
-    stage('Compile') {
-      agent {
-        docker { image 'openjdk:11' }
-      }
-      steps {
-         //compile the application
-        sh 'javac multi-stage-multi-agent/src/Main.java'
-      }
-    }
-
+  
     stage('Run') {
       agent {
         docker { image 'openjdk:11' }
