@@ -36,6 +36,7 @@
 
     <!-- Build configuration -->
     <build>
+             <sourceDirectory>multi-stage-multi-agent/src</sourceDirectory>
         <plugins>
             <!-- Maven Compiler Plugin to compile Java source code -->
             <plugin>
