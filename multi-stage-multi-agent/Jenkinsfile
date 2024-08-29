@@ -4,7 +4,7 @@ pipeline {
     stage('Checkout') {
       steps {
         //clone the git repository
-        git branch: 'main' url: 'https://github.com/Abhishek-Sontakke/Jenkins-Zero-To-Hero.git'
+        git branch: 'main', url: 'https://github.com/Abhishek-Sontakke/Jenkins-Zero-To-Hero.git'
       }
     }
 
