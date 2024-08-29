@@ -1,20 +1,40 @@
 pipeline {
-  agent none
+  agent any
   stages {
-    stage('Back-end') {
+    stage('Checkout') {
+      steps {
+        //clone the git repository
+        git branch: 'main' url: 'https://github.com/Abhishek-Sontakke/Jenkins-Zero-To-Hero.git'
+      }
+    }
+
+     stage('Build') {
       agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        sh 'mvn --version'
+         //run maven build
+        sh 'mvn clean package'
       }
     }
-    stage('Front-end') {
+    
+    stage('Compile') {
       agent {
-        docker { image 'node:16-alpine' }
+        docker { image 'openjdk:11' }
       }
       steps {
-        sh 'node --version'
+         //compile the application
+        sh 'javac src/Main.java'
+      }
+    }
+
+    stage('Run') {
+      agent {
+        docker { image 'openjdk:11' }
+      }
+      steps {
+         //run the java application
+        sh 'java -cp src Main'
       }
     }
   }
