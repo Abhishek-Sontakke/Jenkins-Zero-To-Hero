@@ -25,7 +25,7 @@ pipeline {
       }
       steps {
          //run the java application
-        sh 'java -cp src Main'
+        sh 'java -cp multi-stage-multi-agent/target/classes Main'
       }
     }
   }
