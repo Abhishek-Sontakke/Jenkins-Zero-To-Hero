@@ -18,7 +18,13 @@ pipeline {
       }
     }
     
-  
+  stage('Checking current version') {
+      steps {
+        //Avaliable Java Version
+        sh 'java --version'
+      }
+    }
+    
     stage('Run') {
       agent {
         docker { image 'openjdk:11' }
