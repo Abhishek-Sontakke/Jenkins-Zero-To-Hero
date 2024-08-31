@@ -10,7 +10,7 @@ pipeline {
 
      stage('Build') {
       agent {
-        docker { image 'maven:3.8.1-adoptopenjdk-11' }
+        docker { image 'maven:3.8.1-eclipse-temurin-21' }
       }
       steps {
          //run maven build
@@ -21,11 +21,11 @@ pipeline {
   
     stage('Run') {
       agent {
-        docker { image 'openjdk:11' }
+        docker { image 'eclipse-temurin:21' }
       }
       steps {
          //run the java application
-        sh 'java -cp multi-stage-multi-agent/target/classes Main'
+        sh 'java -cp multi-stage-multi-agent/src Main'
       }
     }
   }
