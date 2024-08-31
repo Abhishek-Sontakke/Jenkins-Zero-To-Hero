@@ -10,7 +10,7 @@ pipeline {
 
      stage('Build') {
       agent {
-        docker { image 'maven:3.8.1-openjdk-11' }
+        docker { image 'maven:3.8.1-openjdk-21' }
       }
       steps {
          //run maven build
@@ -21,7 +21,7 @@ pipeline {
   
     stage('Run') {
       agent {
-        docker { image 'openjdk:11' }
+        docker { image 'openjdk:21' }
       }
       steps {
          //run the java application
