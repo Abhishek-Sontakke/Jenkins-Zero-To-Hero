@@ -10,7 +10,7 @@ pipeline {
 
      stage('Build') {
       agent {
-        docker { image 'maven:3.8.1-openjdk-11' }
+        docker { image 'maven:3.8.1-openjdk-17' }
       }
       steps {
          //run maven build
@@ -18,16 +18,21 @@ pipeline {
       }
     }
     
-  stage('Checking current version') {
+  stage('Check java version') {
+    agent {
+        docker { image 'openjdk-17' }
+      }
       steps {
         //Avaliable Java Version
         sh 'java --version'
+        //compile with java version
+        sh 'mvn clean complie'
       }
     }
     
     stage('Run') {
       agent {
-        docker { image 'openjdk:11' }
+        docker { image 'openjdk:17' }
       }
       steps {
          //run the java application
