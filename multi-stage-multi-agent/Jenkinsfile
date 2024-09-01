@@ -20,7 +20,7 @@ pipeline {
     
   stage('Check java version') {
     agent {
-        docker { image 'openjdk-17' }
+        docker { image 'openjdk:17' }
       }
       steps {
         //Avaliable Java Version
