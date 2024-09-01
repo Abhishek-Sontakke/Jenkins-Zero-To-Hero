@@ -19,14 +19,9 @@ pipeline {
     }
     
   stage('Check java version') {
-    agent {
-        docker { image 'openjdk:17' }
-      }
       steps {
         //Avaliable Java Version
         sh 'java --version'
-        //compile with java version
-        sh 'mvn clean complie'
       }
     }
     
